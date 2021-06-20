@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Knowledge Management System',
+    'site_title' => 'KMS',
 ];
