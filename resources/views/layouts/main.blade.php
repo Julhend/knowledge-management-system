@@ -27,7 +27,7 @@
             <div class="searchfield bg-hed-six">
                 <div class="container" style="padding-top: 20px; padding-bottom: 20px;">
                     <div class="row text-center margin-bottom-20">
-                        <h1 class="white">{{ trans('panel.site_title') }}</h1>
+                        <h1 class="white">{{ trans('KNOWLEDGE MANAGEMENT SYSTEM') }}</h1>
                         <span class="nested">PT Esco Bintan Indonesia</span>
                     </div>
                 </div>
