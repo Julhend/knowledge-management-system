@@ -13,7 +13,7 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['General', 'Account Settings', 'Security & Billing', 'Using gomac', 'Email campaign', 'gomac Configurations', 'Products', 'Customers', 'Orders', 'Suppliers'];
+        $categories = ['General', 'Security & Billing', 'Products', 'Customers', 'Orders', 'Suppliers'];
 
         foreach($categories as $id => $categories)
             Category::create(['name' => $categories, 'slug' => SlugService::createSlug(Category::class, 'slug', $categories)]);

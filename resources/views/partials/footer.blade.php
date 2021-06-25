@@ -1,5 +1,5 @@
 
-<div class="container-fluid footer marg30">
+<!-- <div class="container-fluid footer marg30">
     <div class="container">
         <div class="col-xs-12 col-sm-4 col-md-4 margin-top-20">
             <div class="panel-transparent">
@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <!-- COPYRIGHT INFO -->
 <div class="container-fluid footer-copyright marg30">

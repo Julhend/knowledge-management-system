@@ -10,7 +10,7 @@
                 </li>
                 <li>
                     <a href="{{ route('articles.index') }}">
-                        <i class="fa fa-file-text-o"></i> Articles
+                        <i class="fa fa-file-text-o"></i> Knowledge
                     </a>
                 </li>
                 <li>
