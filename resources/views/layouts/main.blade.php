@@ -10,7 +10,6 @@
         <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     </head>
 
-    <body>
         <!-- <div class="container">
             <div class="row">
                 <div class="header">
@@ -20,7 +19,7 @@
                 </div>
             </div>
         </div> -->
-
+         @include('partials.sign')
         @include('partials.nav')
 
         @if(!isset($exception))

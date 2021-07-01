@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}">Knowledge Base</a>
+                    <a href="{{ route('home') }}">KMS</a>
                 </li>
                 <li>
                     <a href="{{ route('categories.show', [$article->category->slug, $article->category->id]) }}">{{ $article->category->name }}</a>
@@ -28,7 +28,9 @@
             </div>
             <div class="article-info">
                 <div class="art-date">
-                    <i class="fa fa-calendar-o"></i> {{ $article->created_at }}
+                    <!-- <i class="fa fa-calendar-o"></i> {{ $article->created_at }} -->
+                    <!-- MINUTE AGO -->
+                    <i class="fa fa-calendar-o"></i>  {{ $article->created_at }} - {{ $article->created_at->diffForHumans() }}
                 </div>
                 @if($article->category->count())
                     <div class="art-category">
@@ -51,7 +53,101 @@
                     </div>
                 </div>
             @endif
+        
+        <!-- leave a reply -->
+        <div class="article-content">
+        <div class="btn-group">
+            <button class="btn btn-default" id="btn-first-comment">  <i class="fa fa-comment-o"></i> Comment</button>
         </div>
+            <textarea style="margin-top:10px;display:none;" name="comment" class="form-control" id="first-comment" rows="4"></textarea>
+        </div>
+        <hr class="style-three">
+                        <!-- LEAVE A COMMENT SECTION -->
+                        <div class="panel-transparent">
+                            <div class="article-heading">
+                                <i class="fa fa-comment-o"></i> Leave a Comment
+                            </div>
+                             <!-- <div class="btn-group">
+                             <button class="btn btn-default" id="btn-first-comment">  <i class="fa fa-comment-o"></i> Comment</button>
+                             </div> -->
+
+                            <form action="" method="POST" class="comment-form" id="first-comment">
+                                <input type="text" name="name" placeholder="Your Name">
+                                <br>
+                                <textarea rows="4" name="comment" placeholder="Your Reply"></textarea>
+
+                                <button type="submit" value="Submit" class="btn btn-wide btn-primary">Post Comment</button>
+                            </form>
+                        </div>
+                        <!-- END LEAVE A REPLY SECTION -->
+
+        </div>
+
+ <!-- TEST COMMENT -->
+                    <div class="panel panel-default">
+                        <div class="article-heading">
+                            <i class="fa fa-comments-o"></i> Comments
+                        </div>
+
+                        <!-- FIRST LEVEL COMMENT 1 -->
+                        <div class="article-content">
+                            <div class="article-comment-top">
+                             @foreach($article->comments->where('parent',0) as $comment)
+                                <div class="comments-user">
+                                     <img src="{{ asset('images/user.png') }}" alt="user">
+                                    <div class="user-name"> {{ $comment->name }}</div>
+                                    <div class="comment-post-date">
+                                        <span class="italics">{{ $comment->created_at->diffForHumans() }}</span>
+                                    </div>
+                                </div>
+                                <div class="comments-content">
+                                    <p>
+                                      {{ $comment->content }}
+                                    </p>
+                                    <div class="article-read-more">
+                                        <button class="btn btn-default btn-sm">
+                                            <i class="fa fa-reply"></i> Reply</button>
+                                    </div>
+                                </div>
+
+                                <!-- SECOND LEVEL COMMENT -->
+                            @foreach($comment->childs as $child)
+                                <div class="article-comment-second">
+                                    <div class="comments-user">
+                                       <img src="{{ asset('images/user.png') }}" alt="user">
+                                        <div class="user-name">  {{ $child->name }}</div>
+                                        <div class="comment-post-date">Posted On
+                                            <span class="italics">  {{ $child->created_at->diffForHumans() }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="comments-content">
+                                        <p>
+                                              {{ $child->content }}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                                <!-- END SECOND LEVEL COMMENT -->
+                                @endforeach
+                            </div>
+                        </div>
+                        <!-- END FIRST LEVEL COMMENT 1 -->
+                    </div>
+ <!-- END TEST COMMENT -->
+
     </div>
 </div>
+@endsection
+
+
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('#btn-first-comment').click(function(){
+            alert(0);
+               // $('#first-comment').toggle('slide');
+        });
+    });
+    
+</script>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Comment;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
@@ -19,6 +20,12 @@ class ArticleController extends Controller
 
     public function show($slug, $article)
     {
+    
+        // $comments = Comment::all(); 
+        // dd ($comments);
+            // ->orderBy('id', 'desc')
+            // ->paginate(5);
+
         $article = Article::with(['tags', 'category'])
             ->withCount('tags')
             ->whereId($article)
@@ -36,5 +43,11 @@ class ArticleController extends Controller
         $slug = SlugService::createSlug(Article::class, 'slug', $request->input('title',''));
 
         return response()->json(['slug' => $slug]);
+    }
+
+    public function postcommment(){
+       
+      
+      
     }
 }
