@@ -53,25 +53,18 @@
                     </div>
                 </div>
             @endif
+        </div>
+ <!-- leave a reply -->
         
-        <!-- leave a reply -->
-        <div class="article-content">
-        <div class="btn-group">
-            <button class="btn btn-default" id="btn-first-comment">  <i class="fa fa-comment-o"></i> Comment</button>
-        </div>
-            <textarea style="margin-top:10px;display:none;" name="comment" class="form-control" id="first-comment" rows="4"></textarea>
-        </div>
-        <hr class="style-three">
+     
                         <!-- LEAVE A COMMENT SECTION -->
                         <div class="panel-transparent">
-                            <div class="article-heading">
-                                <i class="fa fa-comment-o"></i> Leave a Comment
+    
+                            <div class="article-content">
+                            <div class="btn-group">
+                             <button class="btn btn-default" id="button-comment">  <i class="fa fa-comment-o"></i> Leave a Comment</button>
                             </div>
-                             <!-- <div class="btn-group">
-                             <button class="btn btn-default" id="btn-first-comment">  <i class="fa fa-comment-o"></i> Comment</button>
-                             </div> -->
-
-                            <form action="" method="POST" class="comment-form" id="first-comment">
+                            <form action="" style="margin-top:10px;display:none;" method="POST" class="comment-form" id="first-comment">
                                 <input type="text" name="name" placeholder="Your Name">
                                 <br>
                                 <textarea rows="4" name="comment" placeholder="Your Reply"></textarea>
@@ -79,9 +72,8 @@
                                 <button type="submit" value="Submit" class="btn btn-wide btn-primary">Post Comment</button>
                             </form>
                         </div>
+                         </div>
                         <!-- END LEAVE A REPLY SECTION -->
-
-        </div>
 
  <!-- TEST COMMENT -->
                     <div class="panel panel-default">
@@ -139,15 +131,15 @@
 </div>
 @endsection
 
-
-@section('scripts')
-<script>
+@section('script')
+<script type="text/javascript">
     $(document).ready(function(){
-        $('#btn-first-comment').click(function(){
-            alert(0);
-               // $('#first-comment').toggle('slide');
+        $('#button-comment').click(function(){
+            // alert(0);
+               $('#first-comment').toggle('slide');
         });
     });
     
 </script>
+
 @endsection

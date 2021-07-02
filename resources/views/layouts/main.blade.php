@@ -51,5 +51,7 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src='https://cdn.rawgit.com/VPenkov/okayNav/master/app/js/jquery.okayNav.js'></script>
+
+         @yield('script')
     </body>
 </html>
