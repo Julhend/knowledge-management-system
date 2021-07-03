@@ -20,11 +20,11 @@ class ArticleController extends Controller
 
     public function show($slug, $article)
     {
-    
+
         // $comments = Comment::all(); 
         // dd ($comments);
-            // ->orderBy('id', 'desc')
-            // ->paginate(5);
+        // ->orderBy('id', 'desc')
+        // ->paginate(5);
 
         $article = Article::with(['tags', 'category'])
             ->withCount('tags')
@@ -34,20 +34,20 @@ class ArticleController extends Controller
         $article->timestamps = false;
         $article->views_count++;
         $article->save();
-        
+
         return view('articles.show', compact('article'));
     }
 
     public function check_slug(Request $request)
     {
-        $slug = SlugService::createSlug(Article::class, 'slug', $request->input('title',''));
+        $slug = SlugService::createSlug(Article::class, 'slug', $request->input('title', ''));
 
         return response()->json(['slug' => $slug]);
     }
 
-    public function postcommment(){
-       
-      
-      
+    public function postcommment(Request $request)
+    {
+        $comment = Comment::create($request->all());
+        return redirect()->back()->with('success', 'Your comment has been added');
     }
 }
