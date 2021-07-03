@@ -104,14 +104,16 @@
                                     {{ $comment->content }}
                                 </p>
                                 <div class="article-read-more">
-                                    <button class="btn btn-default btn-sm" id="button-reply">
-                                        <i class="fa fa-reply"></i> Reply</button>
-                                    <form action="" style="margin-top:10px;display:none;" method="POST" class="comment-form"
+                                    {{-- <button class="btn btn-default btn-sm" id="button-reply">
+                                        <i class="fa fa-reply"></i> Reply</button> --}}
+                                    <form action="" style="margin-top:10px;" method="POST" class="comment-form"
                                         id="second-comment">
+                                        @csrf
+                                        <input type="hidden" name="article_id" value="{{ $article->id }}">
+                                        <input type="hidden" name="parent" value="{{ $comment->id }}">
                                         <input type="text" name="name" placeholder="Your Name">
                                         <br>
-                                        <textarea rows="4" name="comment" placeholder="Your Reply"></textarea>
-
+                                        <textarea rows="4" name="content" placeholder="Your Reply"></textarea>
                                         <button type="submit" value="Submit" class="btn btn-wide btn-primary">Post
                                             Reply</button>
                                     </form>
@@ -119,7 +121,10 @@
                             </div>
 
                             <!-- SECOND LEVEL COMMENT -->
-                            @foreach ($comment->childs as $child)
+                            @foreach ($comment->childs()->orderBy('created_at', 'desc')->get()
+        as $child)
+
+
                                 <div class="article-comment-second">
                                     <div class="comments-user">
                                         <img src="{{ asset('images/user.png') }}" alt="user">
@@ -151,14 +156,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#button-comment').click(function() {
-
                 $('#first-comment').toggle('slide');
-            });
-        });
-
-        $(document).ready(function() {
-            $('#button-reply').click(function() {
-                $('#second-comment').toggle('slide');
             });
         });
     </script>
