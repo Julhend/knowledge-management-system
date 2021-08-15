@@ -13,6 +13,7 @@ Route::get('articles/{slug}/{article}', 'ArticleController@show')->name('article
 Route::post('articles/{slug}/{article}', 'ArticleController@postcommment');
 Route::get('articles', 'ArticleController@index')->name('articles.index');
 Route::get('faq', 'FaqController@index')->name('faq.index');
+
 // Route::get('login', 'LoginController@index')->name('login.index');
 
 
@@ -42,6 +43,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Articles
     Route::delete('articles/destroy', 'ArticlesController@massDestroy')->name('articles.massDestroy');
     Route::resource('articles', 'ArticlesController');
+    Route::post('articles/image_upload', 'ArticlesController@upload')->name('articles.upload');
 
     // Faq Categories
     Route::delete('faq-categories/destroy', 'FaqCategoryController@massDestroy')->name('faq-categories.massDestroy');

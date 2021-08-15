@@ -4,15 +4,16 @@ $(document).ready(function () {
   var allEditors = document.querySelectorAll('.ckeditor');
   for (var i = 0; i < allEditors.length; ++i) {
     ClassicEditor.create(
-        allEditors[i],
-        {
-            removePlugins: ['ImageUpload']
-        }
+      allEditors[i]
+      // ,
+      // {
+      //     removePlugins: ['ImageUpload']
+      // }
     );
   }
 
   moment.updateLocale('en', {
-    week: {dow: 1} // Monday is the first day of the week
+    week: { dow: 1 } // Monday is the first day of the week
   })
 
   $('.date').datetimepicker({
